@@ -1,4 +1,3 @@
-```markdown
 # SU-Ray Beamer Theme — User Guide / 中文使用指南
 
 An unofficial adaptive academic presentation theme tailored for **Stockholm University (Department of Computer and Systems Sciences - DSV)**. This theme aligns with SU's official visual identity.
@@ -28,7 +27,7 @@ https://medarbetare.su.se/en/our-su/communicate-su/graphic-profile/logotype
 
 ##  Required Asset Folder Structure
 Before compilation, ensure your root directory contains a `logo/` folder with the following official vector assets. The theme will dynamically invoke them based on your language/theme arguments:
-```
+
 
 ```text
 ├── main.tex
@@ -49,7 +48,7 @@ Before compilation, ensure your root directory contains a `logo/` folder with th
 
 ```
 
-## ⚙️ Package Options
+## Package Options
 
 Load the package in your `main.tex` using the following syntax:
 
@@ -124,7 +123,7 @@ Slide headers are programmatically aware of their presentation state:
 
 Whenever a new `\section{...}` declaration is encountered, the template automatically intercepts compilation to generate an elegant full-screen divider frame carrying the section ordinal index and its corresponding watermark archetype, maintaining narrative tempo.
 
-##  Official Color Palette Cheat Sheet
+## Official Color Palette Cheat Sheet
 
 | Token Name | Hex Code | Visual Identity Usage |
 | --- | --- | --- |
