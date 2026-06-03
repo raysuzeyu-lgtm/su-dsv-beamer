@@ -28,6 +28,7 @@ https://medarbetare.su.se/en/our-su/communicate-su/graphic-profile/logotype
 
 ##  Required Asset Folder Structure
 Before compilation, ensure your root directory contains a `logo/` folder with the following official vector assets. The theme will dynamically invoke them based on your language/theme arguments:
+```
 
 ```text
 ├── main.tex
