@@ -16,7 +16,7 @@ An unofficial adaptive academic presentation theme tailored for **Stockholm Univ
 
 [![Open in Overleaf](https://img.shields.io/badge/Open%20in-Overleaf-green.svg)](https://www.overleaf.com/read/jcbkrkrjftwm#a96fba)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Release](https://img.shields.io/badge/Release-v1.1.0-blue.svg)]()
+[![Release](https://img.shields.io/badge/Release-v1.1.0-blue.svg)](https://github.com/raysuzeyu-lgtm/su-dsv-beamer/releases/tag/V1.1.0)
 
 Before using this template, please check the Graphic Profile from SU:
 https://medarbetare.su.se/en/our-su/communicate-su/graphic-profile/logotype
