@@ -14,8 +14,8 @@ An unofficial adaptive academic presentation theme tailored for **Stockholm Univ
 
 # English Version Documentation
 
-[![Open in Overleaf](https://img.shields.io/badge/Open%20in-Overleaf-green.svg)](YOUR_OVERLEAF_SHARE_LINK_HERE)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#disclaimer--branding-compliance)
+[![Open in Overleaf](https://img.shields.io/badge/Open%20in-Overleaf-green.svg)](https://www.overleaf.com/read/jcbkrkrjftwm#a96fba)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Release](https://img.shields.io/badge/Release-v1.1.0-blue.svg)]()
 
 Before using this template, please check the Graphic Profile from SU:
