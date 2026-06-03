@@ -1,0 +1,198 @@
+\documentclass[aspectratio=169]{beamer}
+
+%\usepackage[dark, english]{SU-Ray} 可选黑色模板/option for dark mode
+%\usepackage[swedish]{SU-Ray} 瑞典语版logo致谢词/Logo and thanks in Swedish
+\usepackage[dark, english]{SU-Ray} 
+
+%% ==========================================
+%% 首页信息填空区 / Title Page Information Area
+%% ==========================================
+\title{An Extremely Long and Comprehensive Guide to Modern LaTeX Presentation Design Principles} 
+\subtitle{Exploring Advanced Beamer Features, Custom Color Palettes, and Elegant Typography for Academic Defenses}
+
+\author{Ray SU}                             
+\degreeproject{Master}{Data Science, Statistics and Decision Analysis}       
+\supervisor{Supervisor Name}                    
+\institute{Department of Computer and Systems Sciences} 
+\date{June 2026}                                  
+%% ==========================================
+
+\begin{document}
+
+%% --- 召唤首页 / Summon Title Page ---
+\SUtitlepage 
+
+%% --- 召唤目录页 / Summon Table of Contents ---
+%% \Sutocpage[Content] []里写任何你想替代outline的东西
+%% \Sutocpage[Content] []fill in anything you want to replace Outline
+\SUtocpage
+
+%% ==========================================
+%% Section 1: 逐行展示与基础排版
+%% Section 1: Step-by-Step Animations & Basic Layout
+%% ==========================================
+\section{Step-by-Step Animations}
+
+\begin{frame}{Dynamic Lists}
+    % \pause 会让内容在放映时分步出现
+    % \pause makes content appear step-by-step during presentation
+    Welcome to the SU-Ray Beamer Theme. Let's look at the basic features:
+    \vspace{0.3cm}
+    \begin{itemize}
+        \item This is the first bullet point. \pause
+        \item Notice how the active items use the primary \alert{SUblue} color for bullets. \pause
+        \item You can emphasize text using the \textbackslash alert command, which renders in \alert{SUfire} orange. \pause
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    \begin{alertblock}{Important Note}
+        Smooth transitions keep the audience focused on your current talking point.
+    \end{alertblock}
+\end{frame}
+
+%% ==========================================
+%% Section 2: 颜色与专属区块
+%% Section 2: Colors and Blocks
+%% ==========================================
+\section{Colors and Blocks}
+
+\begin{frame}{Information Blocks}
+    % 标准区块 (官方大学蓝) / Standard Block (Official SU Blue)
+    \begin{block}{Standard Block}
+        This block is used for general information, definitions, or standard theorems. 
+    \end{block}
+    
+    % 示例区块 (学术橄榄绿) / Example Block (Academic Olive Green)
+    \begin{exampleblock}{Example Block}
+        Perfect for case studies, examples, or practical applications.
+    \end{exampleblock}
+    
+    % 警告区块 (火橙色) / Alert Block (Fire Orange)
+    \begin{alertblock}{Alert Block}
+        Highlights critical issues, warnings, or extremely important results.
+    \end{alertblock}
+\end{frame}
+
+%% ==========================================
+%% Section 3: 图文双栏排版
+%% Section 3: Image & Column Layout
+%% ==========================================
+\section{Image \& Column Layout}
+
+\begin{frame}{Two-Column Layout}
+    \begin{columns}[T] % T 代表顶部对齐 / T means top-aligned
+        
+        % 左侧栏：占屏幕宽度的 50% / Left column: 50% width
+        \begin{column}{0.5\textwidth}
+            \textbf{Left Column Text} \\
+            \vspace{0.5cm}
+            You can easily split the frame into two columns for better space utilization on a 16:9 screen. 
+            \vspace{0.5cm}
+            \begin{itemize}
+                \item Clean visual separation
+                \item Ideal for comparing data
+                \item Text next to images
+            \end{itemize}
+        \end{column}
+        
+        % 右侧栏：占屏幕宽度的 45% / Right column: 45% width (leaves 5% gap for breathing room)
+        \begin{column}{0.45\textwidth}
+            \textbf{Right Column Image} \\
+            \vspace{0.5cm}
+            \begin{center}
+                \includegraphics[width=0.9\textwidth]{Stockholm.jpg}
+                \footnotesize \textcolor{SUgrey}{\textit{Figure 1: Placeholder for an actual chart.}}
+            \end{center}
+        \end{column}
+        
+    \end{columns}
+\end{frame}
+
+%% ==========================================
+%% Section 4: 演示多级抬头与长公式分页
+%% Section 4: Subsections and Formula Pagination
+%% ==========================================
+\section{Mathematical Derivation}
+
+%% 声明 Subsection 后，接下来的页面抬头会自动变成 "4.1 xxx"
+%% After declaring a Subsection, the following frame titles will be "4.1 xxx"
+\subsection{The Normal Distribution}
+
+% 加入 [allowframebreaks] 后，超出页面的内容会自动切分到下一页，并加上罗马数字 (I, II)
+% With [allowframebreaks], overflowing content automatically splits to the next page with Roman numerals (I, II)
+\begin{frame}[allowframebreaks]{Gaussian Probability Density}
+    
+    In probability theory, a normal distribution is a type of continuous probability distribution for a real-valued random variable.
+    
+    \vspace{0.5cm}
+    \begin{block}{Probability Density Function}
+        The general form of its probability density function is:
+        $$ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2} $$
+    \end{block}
+    
+    \vspace{0.5cm}
+    The parameter $\mu$ is the mean or expectation of the distribution, while the parameter $\sigma$ is its standard deviation. The variance of the distribution is $\sigma^2$.
+    
+    %% \framebreak 强制切分到下一页 / Forces a split to the next page
+    \framebreak 
+    
+    A standard normal distribution has a mean of 0 and a standard deviation of 1. The Gaussian integral is a fundamental property:
+    
+    \vspace{0.5cm}
+    \begin{block}{Gaussian Integral}
+        $$ \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi} $$
+    \end{block}
+    
+    \vspace{0.5cm}
+    Notice how the frame title automatically appended a "II" to indicate this is the continuation!
+
+\end{frame}
+
+%% ==========================================
+%% Section 5: 代码展示
+%% Section 5: Code Integration
+%% ==========================================
+\section{Implementation}
+\subsection{Basic Syntax}
+
+%% 注意：带有代码的 frame 要加 [fragile] 参数！
+\begin{frame}[fragile]{C Language Code Snippet}
+    
+    To insert source code perfectly into Beamer, always remember to add \\the \textbf{[fragile]} option to the frame environment.
+    
+    \vspace{0.3cm}
+    % 使用我们新定义的 macode 环境！
+    % 中括号 [] 里写语言，大括号 {} 里写窗口标题(文件名)
+    \begin{macode}[language=C]{hello\_world.c}{Show mac code}
+#include <stdio.h>
+
+/* This is a comment: The main function */
+int main() {
+    // Print a greeting to the console
+    printf("Hello, World!\n");
+    
+    return 0;
+}
+    \end{macode}
+    
+\end{frame}
+
+%% ==========================================
+%% Section 6: Bonus (隐藏彩蛋)
+%% Section 6: Bonus (Easter Egg)
+%% ==========================================
+\section{Bonus}
+
+\begin{frame}{A Well-Deserved Break}
+    \begin{center}
+        \includegraphics[height=4.5cm]{semla.png}\par
+        \vspace{0.6cm}
+        \textcolor{SUblue}{\Large \textit{"Any academic presentation longer than 20 minutes requires a mandatory Swedish Fika."}}
+        
+    \end{center}
+\end{frame}
+
+%% --- 召唤尾页致谢 / Summon Thank You Page ---
+\SUthankyou 
+
+\end{document}

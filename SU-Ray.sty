@@ -1,0 +1,387 @@
+\ProvidesPackage{SU-Ray}[2026/06/03 DSV Beamer Template Created by Zeyu Su]
+
+%% ==========================================
+%% 0. 全局宏包依赖与元数据设定 (Dependencies & Metadata)
+%% ==========================================
+\RequirePackage{lmodern}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{mathtools}
+\RequirePackage[ruled,vlined]{algorithm2e}
+\hypersetup{
+    pdfcreator={Stockholm University DSV template by Zeyu Su},
+    pdfproducer={RayTex 1.0.1}
+}
+
+%% ==========================================
+%% 1. 选项控制 (语言 & 特殊页深浅色主题)
+%% ==========================================
+\newif\ifSU@english \SU@englishtrue
+\newif\ifSU@dark    \SU@darkfalse
+
+\DeclareOption{swedish}{\SU@englishfalse}
+\DeclareOption{english}{\SU@englishtrue}
+\DeclareOption{dark}{\SU@darktrue}
+\DeclareOption{light}{\SU@darkfalse}
+\ProcessOptions\relax
+
+%% ==========================================
+%% 2. 斯大官方标准色
+%% ==========================================
+\RequirePackage{xcolor}
+\definecolor{SUblue}{HTML}{002F5F}     
+\definecolor{SUgrey}{HTML}{333333}     
+\definecolor{SUlightgrey}{HTML}{F5F5F5} 
+\definecolor{SUsky}{HTML}{ACDEE6}      
+\definecolor{SUwater}{HTML}{9BB2CE}    
+\definecolor{SUolive}{HTML}{A3A86B}    
+\definecolor{SUfire}{HTML}{EB7125}     
+
+%% ==========================================
+%% 3. 智能分配资源与色彩变数 (核心逻辑)
+%% ==========================================
+%% A. 语言分配
+\ifSU@english
+    \def\SUnormalLogo{logo/su_vert_en_blue.png} % 普通页雷打不动的蓝标
+    \def\SUthankyouText{Thank you for your attention!}
+    \ifSU@dark
+        \def\SUspecialLogoVert{logo/su_vert_en_white.png}
+        \def\SUspecialLogoHoriz{logo/su_horiz_en_white.png}
+    \else
+        \def\SUspecialLogoVert{logo/su_vert_en_blue.png}
+        \def\SUspecialLogoHoriz{logo/su_horiz_en_blue.png}
+    \fi
+\else
+    \def\SUnormalLogo{logo/su_vert_sv_blue.png} % 普通页雷打不动的蓝标
+    \def\SUthankyouText{Tack för er uppmärksamhet!}
+    \ifSU@dark
+        \def\SUspecialLogoVert{logo/su_vert_sv_white.png}
+        \def\SUspecialLogoHoriz{logo/su_horiz_sv_white.png}
+    \else
+        \def\SUspecialLogoVert{logo/su_vert_sv_blue.png}
+        \def\SUspecialLogoHoriz{logo/su_horiz_sv_blue.png}
+    \fi
+\fi
+
+%% B. 模式分配 (仅影响特殊页)
+\ifSU@dark
+    \def\SUwatermarkOlive{logo/watermark_olive_white.png}
+    \def\SUwatermarkFlame{logo/watermark_flame_white.png}
+    \def\SUwmOpacity{0.15}   % 白色在深蓝底上需要高一点透明度
+    \def\SUspBgColor{SUblue} % 特殊页背景色
+    \def\SUspFgColor{white}  % 特殊页主标题色
+    \def\SUspSubColor{SUsky} % 特殊页副信息色
+\else
+    \def\SUwatermarkOlive{logo/watermark_olive_blue.png}
+    \def\SUwatermarkFlame{logo/watermark_flame_blue.png}
+    \def\SUwmOpacity{0.05}   % 蓝色在白底上必须压低透明度
+    \def\SUspBgColor{white}  
+    \def\SUspFgColor{SUblue} 
+    \def\SUspSubColor{SUgrey}
+\fi
+
+%% c.代码框
+\RequirePackage{listings}
+\RequirePackage[most]{tcolorbox}
+\definecolor{macRed}{HTML}{FF5F56}
+\definecolor{macYellow}{HTML}{FFBD2E}
+\definecolor{macGreen}{HTML}{27C93F}
+\colorlet{CodeCaption}{SUgrey}
+
+\ifSU@dark
+    \definecolor{macTitleBg}{HTML}{2D2D2D}
+    \definecolor{macCodeBg}{HTML}{1E1E1E}
+    \definecolor{macTitleFg}{HTML}{EBEBEB}
+    \definecolor{macCommentDark}{HTML}{7AAB7A}
+    \definecolor{macStringDark}{HTML}{FFB86C}
+    \lstset{
+        basicstyle=\ttfamily\footnotesize\color{white},
+        keywordstyle=\color{SUsky}\bfseries,
+        commentstyle=\color{macCommentDark}\itshape,
+        stringstyle=\color{macStringDark},
+        showstringspaces=false,               
+        tabsize=4,                            
+        breaklines=true,                      
+        numbers=left,                         
+        numberstyle=\tiny\color{SUwater},
+        numbersep=8pt,                        
+        xleftmargin=1.8em,                    
+        stepnumber=1
+    }
+\else
+    \definecolor{macTitleBg}{HTML}{EBEBEB}
+    \definecolor{macCodeBg}{HTML}{F6F6F6}
+    \definecolor{macTitleFg}{HTML}{333333}
+
+    \lstset{
+        basicstyle=\ttfamily\footnotesize\color{SUgrey},
+        keywordstyle=\color{SUblue}\bfseries,
+        commentstyle=\color{SUolive}\itshape,
+        stringstyle=\color{SUfire},
+        showstringspaces=false,               
+        tabsize=4,                            
+        breaklines=true,                      
+        numbers=left,                         
+        numberstyle=\tiny\color{SUwater},
+        numbersep=8pt,                        
+        xleftmargin=1.8em,                    
+        stepnumber=1
+    }
+\fi
+
+\DeclareTCBListing{macode}{ O{} m m }{
+    enhanced, listing only, arc=4pt,                 
+    colback=macCodeBg, colframe=macTitleBg, coltitle=macTitleFg,     
+    fonttitle=\ttfamily\scriptsize\bfseries, title={#2}, halign title=center,     
+    top=1mm, bottom=1mm, left=0mm, right=2mm,     
+    overlay={
+        \fill[macRed]    ([xshift=4mm,  yshift=-3.5mm]frame.north west) circle (2.5pt);
+        \fill[macYellow] ([xshift=8mm,  yshift=-3.5mm]frame.north west) circle (2.5pt);
+        \fill[macGreen]  ([xshift=12mm, yshift=-3.5mm]frame.north west) circle (2.5pt);
+    }, 
+    listing options={#1},
+    code={\ifblank{#3}{}{\tcbset{after={\vspace{0.15cm}\begin{center}\footnotesize\color{CodeCaption}\textbf{Listing:} #3\end{center}}}}}
+}
+
+%% ==========================================
+%% 4. 全局正文排版 (雷打不动的白底浅色主题)
+%% ==========================================
+\mode<presentation>
+\useinnertheme[shadow=false]{rounded}
+\setbeamertemplate{navigation symbols}{} 
+
+%% 正文永远是白底、灰字、蓝强调
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=SUgrey, bg=white}
+\setbeamercolor{structure}{fg=SUblue}
+\setbeamercolor{alerted text}{fg=SUfire}
+\setbeamercolor{title}{fg=SUblue}
+\setbeamercolor{subtitle}{fg=SUgrey}
+\setbeamercolor{frametitle}{fg=SUblue}
+\setbeamercolor{framesubtitle}{fg=SUgrey}
+
+%% 区块颜色
+\setbeamercolor{block title}{fg=white, bg=SUblue}
+\setbeamercolor{block body}{fg=SUgrey, bg=SUlightgrey}
+\setbeamercolor{block title example}{fg=white, bg=SUolive}
+\setbeamercolor{block body example}{fg=SUgrey, bg=SUlightgrey}
+\setbeamercolor{block title alerted}{fg=white, bg=SUfire}
+\setbeamercolor{block body alerted}{fg=SUgrey, bg=SUlightgrey}
+
+\setbeamerfont{title}{size=\LARGE, series=\bfseries}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamerfont{author}{size=\normalsize, series=\bfseries}
+\setbeamerfont{frametitle}{size=\LARGE, series=\bfseries}
+
+%% 普通页抬头多级序号)
+\setbeamertemplate{frametitle}{
+  \vspace*{0.2cm}
+  \begin{beamercolorbox}[wd=\textwidth,left]{frametitle}
+    \usebeamerfont{frametitle}%
+    % 层级判断逻辑
+    \ifnum\value{section}>0
+      \ifnum\value{subsection}>0
+        % 如果处于 subsection 中，显示如 "1.1 "
+        \insertsectionnumber.\insertsubsectionnumber.~%
+      \else
+        % 如果只有 section，显示如 "1. "
+        \insertsectionnumber.~%
+      \fi
+    \fi
+    % 渲染标题
+    \insertframetitle\par
+    % 副标题
+    \ifx\insertframesubtitle\@empty\else
+      \vskip0.2em
+      \usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\par
+    \fi
+  \end{beamercolorbox}
+}
+
+%% ==========================================
+%% 5. 页面背景绘制系统 (TikZ)
+%% ==========================================
+\RequirePackage{tikz}
+
+% (A) 首页背景
+\defbeamertemplate{background canvas}{suray title}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[\SUspBgColor] (current page.south west) rectangle (current page.north east);
+    % 橄榄叶水印
+    %\node[anchor=south west, opacity=\SUwmOpacity, xshift=-1cm, yshift=-1cm] at (current page.south west) {\includegraphics[width=0.6\paperwidth]{\SUwatermarkOlive}};
+    % 使用 \reflectbox 水平翻转，anchor 设为 south east
+    \node[anchor=south east, opacity=\SUwmOpacity, xshift=1cm, yshift=-1cm] at (current page.south east) {\reflectbox{\includegraphics[width=0.6\paperwidth]{\SUwatermarkOlive}}};
+    % 角落 Logo
+    \node[anchor=north east, yshift=-0.4cm, xshift=-0.4cm] at (current page.north east) {\includegraphics[width=2cm]{\SUspecialLogoVert}};
+  \end{tikzpicture}
+}
+
+% (B) 过渡页背景
+\defbeamertemplate{background canvas}{suray section}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[\SUspBgColor] (current page.south west) rectangle (current page.north east);
+    % 火焰水印 (已移至左下角)
+    \node[anchor=south west, opacity=\SUwmOpacity, xshift=-1cm, yshift=-1cm] at (current page.south west) {\includegraphics[width=0.5\paperwidth]{\SUwatermarkFlame}};
+    \node[anchor=north east, yshift=-0.4cm, xshift=-0.4cm] at (current page.north east) {\includegraphics[width=2cm]{\SUspecialLogoVert}};
+  \end{tikzpicture}
+}
+
+% (C) 普通页背景 (极简干净)
+\defbeamertemplate*{background canvas}{suray normal}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[white] (current page.south west) rectangle (current page.north east);
+    \node[anchor=north east, yshift=-0.4cm, xshift=-0.4cm] at (current page.north east) {\includegraphics[width=2cm]{\SUnormalLogo}};
+    % 底部蓝线
+    \fill[SUblue] (current page.south west) rectangle ++(\paperwidth, 0.1cm);
+  \end{tikzpicture}
+}
+
+% (D) 尾页背景
+\defbeamertemplate{background canvas}{suray end}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[\SUspBgColor] (current page.south west) rectangle (current page.north east);
+  \end{tikzpicture}
+}
+
+%% ==========================================
+%% 6. 自定义特殊页面命令
+%% ==========================================
+
+\def\insertsupervisor{} 
+\newcommand{\supervisor}[1]{\def\insertsupervisor{\textcolor{\SUspSubColor}{\footnotesize Supervisor: #1}\par\vskip0.2em}}
+\def\insertdegreeproject{} 
+\newcommand{\degreeproject}[2]{
+    \def\insertdegreeproject{
+        \textcolor{\SUspSubColor}{\footnotesize #1's Degree Project in}\par 
+        \vskip0.1em \textcolor{\SUspSubColor}{\footnotesize #2}\par\vskip0.2em
+    }
+}
+
+%% --- 1. 首页 ---
+\newcommand{\SUtitlepage}{
+  {
+  \setbeamertemplate{background canvas}[suray title]
+  \setbeamertemplate{footline}{}
+  \begin{frame}[plain]
+    \vspace*{0.02\paperheight}
+    \begin{beamercolorbox}[sep=8pt,left,wd=0.75\paperwidth]{title}
+      \usebeamerfont{title}\textcolor{\SUspFgColor}{\inserttitle}\par
+      \vskip0.6em
+      \usebeamerfont{subtitle}\textcolor{\SUspSubColor}{\insertsubtitle}\par
+      \vskip0.8em
+      \usebeamerfont{author}\textcolor{\SUspFgColor}{\insertauthor}\par
+    \end{beamercolorbox}
+    \vfill 
+    \begin{beamercolorbox}[sep=8pt,left,wd=0.85\paperwidth]{author}
+      \insertdegreeproject 
+      \insertsupervisor 
+      \textcolor{\SUspSubColor}{\footnotesize \insertinstitute}\par
+      \ifx\insertdate\@empty\else
+        \vskip0.2em \textcolor{\SUspSubColor}{\footnotesize \insertdate}
+      \fi
+    \end{beamercolorbox}
+    \vspace*{0.02\paperheight}
+  \end{frame}
+  }
+}
+
+%% --- 2. 过渡页 ---
+\AtBeginSection{
+  {
+  \setbeamertemplate{background canvas}[suray section]
+  \setbeamertemplate{footline}{}
+  \begin{frame}[plain]
+    \vfill
+    \begin{center}
+      % 加入 \insertsectionnumber. 自动提取当前章节序号
+      \textcolor{\SUspFgColor}{\Huge\bfseries\insertsectionnumber.~\insertsectionhead}
+    \end{center}
+    \vfill
+  \end{frame}
+  }
+}
+
+%% --- 3. 尾页 ---
+\newcommand{\SUthankyou}{
+  {
+  \setbeamertemplate{background canvas}[suray end]
+  \setbeamertemplate{footline}{}
+  \begin{frame}[plain]
+    \vfill
+    \begin{center}
+      \includegraphics[width=6cm]{\SUspecialLogoHoriz}\par
+      \vspace{0.5cm}
+      \textcolor{\SUspSubColor}{\LARGE \textit{\SUthankyouText}}
+    \end{center}
+    \vfill
+  \end{frame}
+  }
+}
+
+%% ==========================================
+%% 7. 目录页 (Table of Contents)
+%% ==========================================
+
+% (1) 目录条目的视觉样式
+\setbeamertemplate{section in toc}{
+  \vspace{1.2em}
+  \hbox{%
+    % 左侧：巨大的蓝色数字
+    \begin{beamercolorbox}[wd=0.1\textwidth, right]{}%
+      \textcolor{SUblue}{\huge\bfseries\inserttocsectionnumber}%
+    \end{beamercolorbox}%
+    \hspace*{0.05\textwidth}%
+    % 右侧：大号的正文深灰标题
+    \begin{beamercolorbox}[wd=0.85\textwidth, left]{}%
+      \textcolor{SUgrey}{\Large\inserttocsection}%
+    \end{beamercolorbox}%
+  }
+}
+
+% (2) 隐藏子目录
+\setcounter{tocdepth}{1} 
+
+% (3) 目录页命令
+\newcommand{\SUtocpage}[1][Outline]{
+  {
+  \setbeamertemplate{footline}{}
+  \begin{frame}[plain]
+    \begin{columns}[c]
+      
+      % 左栏：标题 + 装饰线
+      \begin{column}{0.35\textwidth}
+        \raggedleft
+        \textcolor{SUblue}{\fontsize{36}{40}\selectfont\bfseries #1} \\
+        \vspace{0.15cm}
+        \textcolor{SUfire}{\rule{1.6cm}{3pt}} % 画一条火橙色的点睛短线
+        \vspace{2cm}
+      \end{column}
+      
+      % 右栏：目录列表
+      \begin{column}{0.6\textwidth}
+        \tableofcontents
+      \end{column}
+      
+    \end{columns}
+  \end{frame}
+  }
+}
+
+%% ==========================================
+%% 页脚设定(作者 | 标题 | 页码)
+%% ==========================================
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.5ex,dp=1.5ex,left,leftskip=2ex]{author in head/foot}%
+    \usebeamercolor[fg]{structure}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.5ex,dp=1.5ex,center]{title in head/foot}%
+    \usebeamercolor[fg]{structure}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.5ex,dp=1.5ex,right,rightskip=2ex]{date in head/foot}%
+    \usebeamercolor[fg]{structure}\insertframenumber{} / \inserttotalframenumber
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
