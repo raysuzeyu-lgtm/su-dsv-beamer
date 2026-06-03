@@ -20,13 +20,13 @@ An unofficial adaptive academic presentation theme tailored for **Stockholm Univ
 [![Release](https://img.shields.io/badge/Release-v1.1.0-blue.svg)]()
 
 Before using this template, please check the Graphic Profile from SU:
-�� https://medarbetare.su.se/en/our-su/communicate-su/graphic-profile/logotype
+https://medarbetare.su.se/en/our-su/communicate-su/graphic-profile/logotype
 
 * **Author:** Zeyu Su (Ray SU)
 * **Release Date:** June 2026
 * **Engine Compatibility:** Best compiled with `pdfLaTeX` or `XeLaTeX` (ensure `lmodern` font package is integrated).
 
-## �� Required Asset Folder Structure
+##  Required Asset Folder Structure
 Before compilation, ensure your root directory contains a `logo/` folder with the following official vector assets. The theme will dynamically invoke them based on your language/theme arguments:
 
 ```text
@@ -69,7 +69,7 @@ Load the package in your `main.tex` using the following syntax:
 
 > *Note: Regular text content slides remain strictly white (`bg=white`) across both options to protect reading comfort and mathematical visibility.*
 
-## �� Core Macro Commands
+##  Core Macro Commands
 
 ### 1. Titlepage Metadata Setup
 
@@ -88,7 +88,7 @@ Place these configuration commands inside the preamble (before `\begin{document}
 * **`\SUtocpage[Title]`**: Renders an asymmetrical magazine-style Agenda frame. Takes an optional parameter to replace the title text (Defaults to `Outline`), bounded by an explicit *SU Fire Orange* pointing anchor line.
 * **`\SUthankyou`**: Triggers the concluding frame with the horizontal master logo and automated localized gratitude typography.
 
-## �� Advanced Smart Features
+##  Advanced Smart Features
 
 ### 1. Adaptive Mac OS Code Environment (`macode`)
 
@@ -123,7 +123,7 @@ Slide headers are programmatically aware of their presentation state:
 
 Whenever a new `\section{...}` declaration is encountered, the template automatically intercepts compilation to generate an elegant full-screen divider frame carrying the section ordinal index and its corresponding watermark archetype, maintaining narrative tempo.
 
-## �� Official Color Palette Cheat Sheet
+##  Official Color Palette Cheat Sheet
 
 | Token Name | Hex Code | Visual Identity Usage |
 | --- | --- | --- |
@@ -135,7 +135,7 @@ Whenever a new `\section{...}` declaration is encountered, the template automati
 | `SUolive` | `#A3A86B` | Example blocks, listings documentation references |
 | `SUfire` | `#EB7125` | Critical alert states, `\alert{}` triggers, agenda accent line |
 
-## ⚖️ Disclaimer & Branding Compliance
+## Disclaimer & Branding Compliance
 
 > * **Branding Authority:** This template is built with close reference to the Stockholm University Visual Identity Guidelines. Users are highly encouraged to review the official documentation linked above to ensure appropriate usage of university seals and emblems.
 > * **Artistic Re-Interpretation:** For advanced presentation aesthetics, the template utilizes custom **deconstructed and mirror-reflected artistic variations** of background auxiliary patterns (the olive branch and flame). These designs are intended solely for graphic style explorations within academic contexts and do not substitute the official, non-deconstructed primary institutional logotypes.
@@ -148,7 +148,7 @@ Whenever a new `\section{...}` declaration is encountered, the template automati
 
 # 中文版使用说明
 
-## �� 资产目录结构要求
+##  目录结构要求
 
 在编译之前，请确保项目的根目录下有一个 `logo/` 文件夹，并存放以下官方矢量素材。模板会根据你传入的语言和主题参数，自动动态调用它们：
 
@@ -171,7 +171,7 @@ Whenever a new `\section{...}` declaration is encountered, the template automati
 
 ```
 
-## ⚙️ 宏包参数配置
+## 宏包参数配置
 
 在你的 `main.tex` 中通过以下方式引入模板：
 
@@ -192,7 +192,7 @@ Whenever a new `\section{...}` declaration is encountered, the template automati
 
 > **重要注记：** 无论选择哪种模式，正文内容页均保持绝对高清晰度的纯白背景 (`bg=white`)，以确保长篇数学公式与学术文本的绝对可读性。
 
-## �� 核心命令与填空区
+##  核心命令与填空区
 
 ### 1. 首页元数据设置
 
@@ -205,13 +205,13 @@ Whenever a new `\section{...}` declaration is encountered, the template automati
 * **`\institute{...}`**: 学院/部门名称（例如：`Department of Computer and Systems Sciences`）。
 * **`\date{...}`**: 报告日期（例如：`June 2026`）。
 
-### 2. 页面召唤宏
+### 2. 页面宏
 
-* **`\SUtitlepage`**: 召唤专属首页，包含右下角水平翻转的巨幅半透明橄榄枝镜像系统。
-* **`\SUtocpage[自定义标题]`**: 召唤非对称杂志风目录页。参数可选（默认显示 `Outline`），左栏带有标志性的*斯大火橙色*装饰短线。
-* **`\SUthankyou`**: 召唤华丽尾页，自动居中横版矢量 Logo，并根据语言输出本地化致谢。
+* **`\SUtitlepage`**: 专属首页，包含右下角水平翻转的巨幅半透明橄榄枝镜像系统。
+* **`\SUtocpage[自定义标题]`**: 非对称杂志风目录页。参数可选（默认显示 `Outline`），左栏带有标志性的*斯大火橙色*装饰短线。
+* **`\SUthankyou`**: 华丽尾页，自动居中横版矢量 Logo，并根据语言输出本地化致谢。
 
-## �� 核心黑科技功能
+##  核心功能
 
 ### 1. 自适应 Mac OS 窗口代码环境 (`macode`)
 
@@ -276,9 +276,5 @@ To keep your GitHub repository clean, it is highly recommended to include a `.gi
 *.blg
 *.thm
 *.pre
-
-```
-
-```
 
 ```
